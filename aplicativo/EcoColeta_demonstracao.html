@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#133f32"><title>EcoColeta</title>
+  <style>:root{--ink:#163e32;--green:#196449;--lime:#d9ed9c;--paper:#f4f6f0;--muted:#64766b;--line:#e0e7db;--orange:#b65c13;--red:#b73c36}*{box-sizing:border-box}body{margin:0;background:#e6ece2;color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #86b43e;outline-offset:3px}.app{max-width:620px;margin:auto;background:var(--paper);min-height:100vh}header{background:var(--ink);color:white;padding:24px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px}.brand-icon{font-size:32px;color:var(--lime);line-height:1}.brand strong{display:block;font-size:22px;letter-spacing:-.7px}.brand small{display:block;font-size:8px;letter-spacing:1.5px;color:#c4d8cc}.badge{font-size:10px;letter-spacing:.6px;font-weight:700;background:var(--lime);color:var(--ink);padding:6px 9px;border-radius:7px;white-space:nowrap}.badge.soft{background:#edf5db}.badge.warn{background:#fff0d9;color:#884c16}.badge.danger{background:#ffe2dc;color:#9c332e}main{padding:28px 24px 100px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;color:#65816b}h1{font-size:34px;line-height:1.12;letter-spacing:-1.3px;margin:12px 0 18px}h2{font-size:16px;letter-spacing:-.2px;margin:0 0 10px}.location{font-size:12px;display:flex;align-items:center;gap:8px;margin-bottom:18px;color:var(--muted)}.dot{width:7px;height:7px;display:inline-block;background:#418b57;border-radius:50%}.notice{background:#e8efdf;border:1px solid #d5e2c8;border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.6;margin:0 0 18px}.notice.warning{background:#fff3df;border-color:#efdab4;color:#884c16}.notice.error{background:#fce9e4;border-color:#efd0c9;color:#9c332e}.level-card{background:white;border-radius:18px;padding:22px;box-shadow:0 7px 24px #153b2907;border:1px solid var(--line)}.card-top,.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.card-top{font-size:12px;color:var(--muted)}.level-body{display:flex;align-items:center;justify-content:center;gap:34px;padding:28px 0 18px}.level-number>div{display:flex;align-items:baseline;gap:3px}#levelValue{font-size:70px;font-weight:700;line-height:1;letter-spacing:-4px}.percent{font-size:26px;color:#7a8a7b}.level-number p{font-size:12px;color:var(--muted);margin:6px 0 0;max-width:165px}.bin{width:88px;position:relative;padding-top:12px}.lid{position:absolute;top:2px;left:-5px;width:98px;height:11px;background:#1d6047;border-radius:4px}.lid:before{content:'';position:absolute;top:-7px;left:29px;width:35px;height:8px;border:3px solid #1d6047;border-bottom:0;border-radius:4px 4px 0 0}.bin-body{height:112px;background:#eaf0e3;border:3px solid #1d6047;border-top:0;border-radius:0 0 11px 11px;overflow:hidden;position:relative}.bin-body span{position:absolute;inset:25px 0;text-align:center;font-size:40px;color:#1b563e}.bin-fill{position:absolute;bottom:0;width:100%;height:35%;background:#b8da7c;transition:height .4s,background .4s}.wheels{display:flex;justify-content:space-between;padding:0 11px}.wheels i{width:11px;height:9px;background:#1d6047;border-radius:0 0 3px 3px}.progress{height:7px;background:#eaf0e3;border-radius:10px;position:relative}.progress div{height:100%;width:35%;background:#8cbd5c;border-radius:10px;transition:width .4s}.progress i{position:absolute;height:13px;width:2px;background:#957b45;top:-3px}.scale{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:8px}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.metrics article{padding:17px;background:white;border:1px solid var(--line);border-radius:13px}.metric-label{font-size:9px;letter-spacing:1px;display:block;font-weight:700;color:var(--muted)}.metrics strong{display:block;font-size:30px;letter-spacing:-1px;margin:5px 0 0}.metrics strong.time{font-size:22px;margin-top:10px}.metrics small{font-size:10px;color:var(--muted);display:block}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}.panel-heading h2{margin:0}.muted{color:var(--muted);font-size:12px}.panel p{font-size:13px}.panel small{display:block;font-size:11px;color:var(--muted)}.chart{height:155px;margin-top:18px}.chart svg{width:100%;height:100%;overflow:visible}.chart-empty{display:flex;align-items:center;justify-content:center;background:#f6f8f2;border-radius:10px;height:140px;font-size:12px;color:var(--muted)}label{display:block;font-size:12px;font-weight:700;margin:15px 0 8px}label:first-child{margin-top:0}label strong{float:right}input[type=range]{width:100%;accent-color:var(--green)}input[type=password],select,textarea{width:100%;border:1px solid #cad5c5;border-radius:8px;padding:12px;color:var(--ink);background:#fff}textarea{font-family:monospace;font-size:11px;resize:vertical}.primary{background:var(--green);color:#fff;border:0;padding:13px 16px;border-radius:9px;font-weight:700;font-size:13px}.primary:disabled{opacity:.55;cursor:wait}.secondary{background:#edf3e4;color:var(--green);border:1px solid #d8e5ca;padding:11px 9px;border-radius:9px;font-size:11px;font-weight:700}.button-row{display:flex;gap:8px;margin:12px 0}.button-row button{flex:1}.wide{width:100%}.demo-panel{border-style:dashed;border-color:#b3cb94}.checkbox{display:flex;gap:10px;align-items:center;font-weight:400;margin:20px 0}.checkbox input{accent-color:var(--green);width:17px;height:17px;flex-shrink:0}.rule{display:flex;justify-content:space-between;gap:10px;font-size:11px;padding:10px 0;border-bottom:1px solid var(--line)}.rule strong{text-align:right}.data-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}.data-row small{font-size:10px}.data-row:last-child{border:0}footer{text-align:center;color:#849281;font-size:10px;margin-top:30px;line-height:1.8}nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:620px;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid var(--line);padding:8px 6px max(12px,env(safe-area-inset-bottom));z-index:2}nav button{border:0;background:none;color:#768771;font-size:10px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:2px;border-radius:9px}nav button span{font-size:21px;height:27px}nav button.active{background:#edf4e3;color:#174e38;font-weight:700}.page{display:none}.page.active{display:block}.hidden{display:none!important}@media(max-width:360px){header{padding:20px 16px}.brand strong{font-size:20px}main{padding:24px 16px 100px}h1{font-size:30px}.level-card{padding:17px}.level-body{gap:22px}#levelValue{font-size:60px}.location{font-size:10px}.badge{font-size:9px}.metrics article{padding:13px}.metrics strong.time{font-size:19px}}@media(min-width:621px){.app{box-shadow:0 0 80px #1b39261a}header{padding:28px 32px}main{padding:32px 32px 100px}}
+.point-switcher{background:#e8efdf;padding:13px 15px;border-radius:12px;margin-bottom:24px}.point-switcher label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:0}.point-switcher select{padding:10px;font-weight:700}.fleet-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:20px 0}.fleet-metrics article{background:white;border:1px solid var(--line);border-radius:12px;padding:12px 10px}.fleet-metrics strong{display:block;font-size:28px;line-height:1.2}.fleet-metrics small{font-size:9px;color:var(--muted);line-height:1.4;display:block;margin-top:5px}.point-card{display:block;width:100%;text-align:left;background:#f6f8f1;border:1px solid var(--line);border-radius:10px;padding:13px;margin:9px 0;color:var(--ink)}.point-card.selected{border:2px solid #52884b;padding:12px;background:#f0f5e8}.point-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.point-card-name{font-size:13px;overflow-wrap:anywhere;min-width:0}.point-card-level{font-size:24px;white-space:nowrap}.point-card small{font-size:10px;overflow-wrap:anywhere}.point-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}.point-card .badge{font-size:9px;white-space:normal}.selected-point-name{font-size:23px;margin:8px 0;overflow-wrap:anywhere}#selectedLocation,.selected-point-label{overflow-wrap:anywhere}.comparison-row{padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}.comparison-row:last-child{border:0}.comparison-row strong{display:block;overflow-wrap:anywhere}.comparison-row .comparison-values{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;margin-top:5px;color:var(--muted)}input[type=text]{width:100%;border:1px solid #cad5c5;border-radius:8px;padding:12px;color:var(--ink);background:#fff}#fleetMessage:empty,#pointFormMessage:empty{display:none}
+.alert-toast{position:fixed;top:12px;left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:596px;background:#fff4df;border:1px solid #d3a45d;border-left:5px solid #c58630;box-shadow:0 10px 35px #143c3230;z-index:10;padding:14px;display:flex;gap:12px;border-radius:12px;color:#6d4518}.alert-toast.critical{background:#fff0eb;color:#902d28;border-color:#df9a8c;border-left-color:#c2493f}.alert-toast strong{font-size:14px}.alert-toast p{margin:5px 0 0;font-size:12px}.alert-toast button{border:0;background:transparent;font-size:24px;color:inherit;align-self:flex-start;padding:0 4px}.critical-button{border:1px solid #dca99b;background:#fff0ea;color:#9a3d31;border-radius:9px;padding:11px;font-size:12px;font-weight:700;margin-bottom:12px}.notice-row{padding:11px 0;border-bottom:1px solid var(--line)}.notice-row:last-child{border:0}.notice-row strong{font-size:12px;display:block;overflow-wrap:anywhere}.notice-row p{font-size:12px;margin:5px 0}.notice-row small{font-size:10px}details{font-size:12px;margin-top:14px}summary{cursor:pointer;font-weight:700}details ol{padding-left:20px}details li{margin:8px 0}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand"><span class="brand-icon" aria-hidden="true">↻</span><div><strong>EcoColeta</strong><small>MONITORAMENTO INTELIGENTE</small></div></div>
+    <span id="modeBadge" class="badge">SIMULAÇÃO</span>
+  </header>
+  <aside id="alertToast" class="alert-toast hidden" role="alert" aria-live="assertive"><div><strong id="toastTitle"></strong><p id="toastText"></p></div><button id="dismissToast" type="button" aria-label="Fechar aviso">×</button></aside>
+  <main>
+    <div class="point-switcher"><label for="pointSelect">Ponto em detalhe</label><select id="pointSelect" aria-label="Selecionar ponto de coleta"></select></div>
+    <section class="page active" id="monitor" aria-label="Monitoramento">
+      <div class="eyebrow">VISÃO GERAL</div><h1>Vários pontos.<br>Uma visão da coleta.</h1>
+      <div class="fleet-metrics"><article><strong id="pointCount">3</strong><small>Pontos</small></article><article><strong id="priorityCount">0</strong><small>Em alerta</small></article><article><strong id="unknownCount">0</strong><small>Sem leitura válida</small></article></div>
+      <article class="panel"><div class="panel-heading"><h2>Prioridade de coleta</h2><button type="button" id="refreshAllButton" class="secondary">Atualizar todos</button></div><p class="muted">Críticos e em atenção aparecem primeiro. Selecione um ponto para consultar seus dados.</p><div id="pointList"></div><p id="fleetMessage" class="muted" role="status"></p></article>
+      <article class="panel"><div class="panel-heading"><h2>Avisos desta sessão</h2><span id="noticeCount" class="badge">0</span></div><p class="muted">Avisos internos do EcoColeta. Não confirmam o envio de SMS ou push pela nuvem.</p><div id="noticeList"></div></article>
+      <div class="eyebrow">PONTO SELECIONADO</div><h2 id="selectedPointName" class="selected-point-name">Entrada principal</h2>
+      <div id="selectedLocation" class="location">Escola · acesso principal</div>
+      <div id="message" class="notice" role="status">Demonstração local. Nenhum SMS ou e-mail é enviado neste modo.</div>
+      <article class="level-card">
+        <div class="card-top"><span>Preenchimento estimado</span><span id="statusBadge" class="badge soft">Normal</span></div>
+        <div class="level-body">
+          <div class="bin" aria-hidden="true"><div class="lid"></div><div class="bin-body"><div id="binFill" class="bin-fill"></div><span>↻</span></div><div class="wheels"><i></i><i></i></div></div>
+          <div class="level-number"><div><span id="levelValue">—</span><span class="percent">%</span></div><p id="levelDescription">Aguardando leitura</p></div>
+        </div>
+        <div class="progress"><div id="progressFill"></div><i style="left:80%"></i></div>
+        <div class="scale"><span>Vazia</span><span>Alerta em 80%</span><span>Cheia</span></div>
+      </article>
+      <div class="metrics"><article><span class="metric-label">COLETAS PROVÁVEIS</span><strong id="collectionCount">0</strong><small>No período selecionado</small></article><article><span class="metric-label">ÚLTIMA LEITURA</span><strong class="time" id="lastTime">—</strong><small id="connectionText">Aguardando dados</small></article></div>
+      <article class="panel"><div class="panel-heading"><h2>Evolução do nível</h2><span class="muted period-label">Últimas 24 horas</span></div><div id="chart" class="chart" role="img" aria-label="Gráfico do nível de preenchimento"></div><small class="muted">Estimativa pela altura dos resíduos, sem medição de peso ou volume.</small></article>
+      <article id="demoPanel" class="panel demo-panel"><div class="panel-heading"><h2>Experimente o protótipo</h2><span class="badge">DEMO</span></div><label for="demoLevel">Nível simulado <strong id="demoValue">35%</strong></label><input id="demoLevel" type="range" min="0" max="100" value="35"><div class="button-row"><button id="fillButton" class="secondary">Encher até 85%</button><button id="emptyButton" class="secondary">Esvaziar até 10%</button></div><button id="criticalButton" class="critical-button wide" type="button">Testar crítico em 97%</button><small>Os testes criam avisos dentro do aplicativo, sem enviar mensagens reais. Para registrar uma coleta provável, passe de pelo menos 50% para até 20% e aguarde três leituras consecutivas.</small></article>
+      <button class="primary wide" id="refreshButton">Atualizar dados</button>
+    </section>
+    <section class="page" id="history" aria-label="Histórico">
+      <div class="eyebrow">ACOMPANHAMENTO</div><h1>Histórico de<br>leituras e coletas.</h1><p class="muted selected-point-label"></p>
+      <div class="panel"><label for="period">Período consultado</label><select id="period"><option value="1">Última hora</option><option value="24" selected>Últimas 24 horas</option><option value="168">Últimos 7 dias</option></select><p class="muted">A consulta retorna até 500 registros entre nível, sensor e coletas. Se esse limite for atingido, reduza o período. Os relatórios usam somente os registros recebidos.</p></div>
+      <div id="limitWarning" class="notice warning hidden">Limite de 500 registros atingido. O período pode estar incompleto; reduza o intervalo.</div>
+      <article class="panel"><h2>Coletas prováveis</h2><p class="muted">Estimadas por queda persistente do nível. Não representam confirmação de uma equipe de coleta.</p><div id="collectionList"></div></article>
+      <article class="panel"><h2>Últimas medições</h2><div id="readingsList"></div></article>
+    </section>
+    <section class="page" id="report" aria-label="Relatório">
+      <div class="eyebrow">DADOS PARA DECIDIR</div><h1>Relatório do<br>período.</h1><p class="muted selected-point-label"></p><p class="muted period-label">Últimas 24 horas</p>
+      <article class="panel"><h2>Comparação dos pontos</h2><p class="muted">Coletas e média se referem aos registros recebidos no período. A situação de cada ponto depende da última consulta.</p><div id="fleetReport"></div></article>
+      <div id="reportSource" class="notice">Dados simulados localmente.</div>
+      <div class="metrics"><article><span class="metric-label">MENOR NÍVEL</span><strong id="minLevel">—</strong></article><article><span class="metric-label">MAIOR NÍVEL</span><strong id="maxLevel">—</strong></article><article><span class="metric-label">MÉDIA DAS LEITURAS</span><strong id="avgLevel">—</strong></article><article><span class="metric-label">LEITURAS ≥ 80%</span><strong id="alertCount">0</strong></article></div>
+      <article class="panel"><h2>Resumo para apresentação</h2><p id="reportText">Aguardando dados.</p><p class="muted">A média é calculada sobre as amostras recebidas. A quantidade de leituras em alerta não equivale a mensagens enviadas ou tempo em alerta.</p></article>
+      <button id="csvButton" class="primary wide">Gerar CSV dos registros</button>
+      <div id="csvPanel" class="panel hidden"><label for="csvText">CSV para copiar</label><textarea id="csvText" rows="8" readonly></textarea><small>Selecione e copie o texto. No navegador do computador, também é oferecido um download.</small></div>
+    </section>
+    <section class="page" id="settings" aria-label="Configurações">
+      <div class="eyebrow">CONEXÃO</div><h1>Do protótipo<br>para a nuvem.</h1>
+      <article class="panel"><h2>Notificação e SMS</h2><span class="badge warn">ATIVAÇÃO EXTERNA PENDENTE</span><p>O EcoColeta avisa na tela enquanto está aberto. No iPhone, o push em segundo plano será recebido pelo aplicativo TagoIO, com a mesma conta da nuvem. O SMS será enviado pela Twilio.</p><label class="checkbox"><input id="internalNotices" type="checkbox" checked> Exibir avisos internos enquanto o EcoColeta está aberto</label><details><summary>Como ativar os envios reais</summary><ol><li>Crie sua conta TagoIO e instale o app TagoIO no celular.</li><li>Entre na mesma conta e autorize as notificações do aplicativo.</li><li>Crie ou habilite a Twilio para SMS e configure os Secrets na TagoIO.</li><li>Configure e teste as regras descritas na pasta nuvem do projeto: atenção em 80% a menos de 90% e crítico a partir de 90%.</li><li>Valide o push com o EcoColeta fechado e o SMS no telefone de teste.</li></ol><p class="muted">O pacote não contém contas, créditos de SMS ou confirmação de entrega. Os envios externos funcionam pelas regras da nuvem, sem depender deste botão de avisos internos.</p></details></article>
+      <form id="settingsForm" class="panel">
+        <label for="configPoint">Configurar dispositivo do ponto</label><select id="configPoint"></select>
+        <label for="mode">Origem dos dados</label><select id="mode"><option value="demo">Demonstração local</option><option value="cloud">Dispositivo via TagoIO</option></select>
+        <label for="region">Região da conta TagoIO</label><select id="region"><option value="https://api.us-e1.tago.io">Estados Unidos · us-e1</option><option value="https://api.eu-w1.tago.io">Europa · eu-w1</option></select>
+        <label for="token">Token do dispositivo</label><input id="token" type="password" autocomplete="off" placeholder="Cole o Device-Token aqui">
+        <p class="muted">O token fica somente na memória desta sessão. Digite novamente ao reabrir. Use um dispositivo de demonstração e nunca um token de perfil.</p>
+        <p class="muted">Cada ponto usa seu próprio dispositivo, token e região. O mesmo token não pode ser usado em duas lixeiras. O modo Nuvem vale para o painel inteiro; pontos sem token ficam identificados como não configurados.</p>
+        <label class="checkbox"><input id="autoRefresh" type="checkbox"> Atualizar todos os pontos a cada 60 segundos</label>
+        <button type="submit" class="primary wide">Aplicar e conectar</button><p id="settingsMessage" class="muted" role="status"></p>
+      </form>
+      <form id="pointForm" class="panel"><h2>Cadastrar ponto de coleta</h2><label for="newPointId">Identificador do ponto</label><input id="newPointId" type="text" maxlength="32" pattern="[A-Za-z0-9_-]+" placeholder="Ex.: LIXEIRA_04" required><label for="newPointName">Nome do ponto</label><input id="newPointName" type="text" maxlength="60" placeholder="Ex.: Biblioteca" required><label for="newPointLocation">Localização</label><input id="newPointLocation" type="text" maxlength="120" placeholder="Ex.: Bloco B · térreo" required><p class="muted">Cadastre um ponto por lixeira/dispositivo. Nomes e locais são salvos neste aparelho, quando o armazenamento local está disponível. Tokens e medições não são gravados.</p><button type="submit" class="primary wide">Cadastrar ponto</button><p id="pointFormMessage" class="muted" role="status"></p></form>
+      <article class="panel"><h2>Regras do protótipo</h2><div class="rule"><span>Normal</span><strong>Abaixo de 80%</strong></div><div class="rule"><span>Atenção</span><strong>De 80% a menos de 90%</strong></div><div class="rule"><span>Crítico</span><strong>A partir de 90%</strong></div><div class="rule"><span>Coleta provável</span><strong>≥ 50% para ≤ 20%</strong></div><p class="muted">São limites didáticos do projeto. SMS e e-mail são configurados na nuvem e podem depender de serviços pagos. O aplicativo não confirma a entrega dessas mensagens.</p></article>
+    </section>
+    <footer>EcoColeta v6.0 · Projeto de Internet das Coisas<br>Faculdade Nova Roma · Unidade 2</footer>
+  </main>
+  <nav aria-label="Navegação principal"><button class="active" data-page="monitor"><span aria-hidden="true">◉</span>Monitor</button><button data-page="history"><span aria-hidden="true">≡</span>Histórico</button><button data-page="report"><span aria-hidden="true">▤</span>Relatório</button><button data-page="settings"><span aria-hidden="true">⚙</span>Ajustes</button></nav>
+</div>
+<script>(function(root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.EcoCore = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function() {
+  'use strict';
+  const status = n => n >= 90 ? 'Crítico' : n >= 80 ? 'Atenção' : 'Normal';
+  const fillPercent = cm => Math.max(0, Math.min(100, (40 - cm) * 100 / 35));
+  function normalize(rows) {
+    if (!Array.isArray(rows)) throw new Error('Resposta sem uma lista de medições.');
+    return rows.filter(r => r && typeof r.variable === 'string' && Number.isFinite(Date.parse(r.time)))
+      .map(r => ({...r, value: r.value === null || r.value === '' ? NaN : Number(r.value)}))
+      .filter(r => Number.isFinite(r.value))
+      .sort((a,b) => Date.parse(a.time) - Date.parse(b.time));
+  }
+  function summarize(rows, since, now = Date.now()) {
+    const data = normalize(rows).filter(r => Date.parse(r.time) >= since && Date.parse(r.time) <= now);
+    const levels = data.filter(r => r.variable === 'nivel' && r.value >= 0 && r.value <= 100);
+    const health = data.filter(r => r.variable === 'sensor_ok').slice(-1)[0];
+    const seen = new Set();
+    const collections = data.filter(r => {
+      if (r.variable !== 'coleta') return false;
+      const key = r.metadata && r.metadata.event_id || String(r.value);
+      if (seen.has(key)) return false;
+      seen.add(key); return true;
+    });
+    const values = levels.map(r => r.value);
+    const latest = levels.slice(-1)[0];
+    return {data, levels, collections, latest, health,
+      min: values.length ? Math.min(...values) : null,
+      max: values.length ? Math.max(...values) : null,
+      average: values.length ? values.reduce((a,b)=>a+b,0) / values.length : null,
+      alerts: values.filter(n=>n>=80).length,
+      stale: !latest || now - Date.parse(latest.time) > 120000,
+      sensorFailed: !!health && health.value === 0 && (!latest || Date.parse(health.time) >= Date.parse(latest.time))};
+  }
+  class CollectionDetector {
+    constructor() { this.armed = false; this.low = 0; }
+    update(n, valid = true) {
+      if (!valid || !Number.isFinite(n)) { this.low = 0; return false; }
+      if (n >= 50) { this.armed = true; this.low = 0; return false; }
+      if (!this.armed || n > 20) { this.low = 0; return false; }
+      if (++this.low < 3) return false;
+      this.armed = false; this.low = 0; return true;
+    }
+  }
+  class AlertDetector {
+    constructor(){this.attentionLocked=false;this.criticalLocked=false;this.lastTime=-Infinity;}
+    observe(level, valid=true, time=Date.now()){
+      if(!valid||!Number.isFinite(level)||level<0||level>100||!Number.isFinite(time)||time<=this.lastTime)return null;
+      this.lastTime=time;
+      if(level<70)this.attentionLocked=false;
+      if(level<85)this.criticalLocked=false;
+      if(level>=90&&!this.criticalLocked){this.criticalLocked=true;return 'critical';}
+      if(level>=80&&level<90&&!this.attentionLocked){this.attentionLocked=true;return 'attention';}
+      return null;
+    }
+  }
+  function buildUrl(base, hours) {
+    if (!['https://api.us-e1.tago.io','https://api.eu-w1.tago.io'].includes(base)) throw new Error('Região inválida.');
+    if (![1,24,168].includes(Number(hours))) throw new Error('Período inválido.');
+    const start = new Date(Date.now() - Number(hours)*3600000).toISOString();
+    return base + '/data?variable%5B%5D=nivel&variable%5B%5D=coleta&variable%5B%5D=sensor_ok&qty=500&start_date=' + encodeURIComponent(start);
+  }
+  function fleet(points, since, now = Date.now()) {
+    return points.map(point => {
+      const summary = summarize(point.rows || [], since, now);
+      const unavailable = summary.stale || summary.sensorFailed || !!point.error;
+      const n = summary.latest ? summary.latest.value : null;
+      return {...point, summary, unavailable,
+        label: point.error ? 'Falha de consulta' : summary.sensorFailed ? 'Falha no sensor' : summary.stale ? 'Sem leitura recente' : status(n),
+        priority: unavailable ? 2 : n >= 90 ? 0 : n >= 80 ? 1 : 3};
+    }).sort((a,b) => a.priority-b.priority || ((b.summary.latest?.value || 0)-(a.summary.latest?.value || 0)) || a.id.localeCompare(b.id));
+  }
+  function validatePoint(candidate, existing = []) {
+    const point={id:String(candidate.id || '').trim().toUpperCase(),name:String(candidate.name || '').trim(),location:String(candidate.location || '').trim()};
+    if (!/^[A-Z0-9_-]{1,32}$/.test(point.id)) throw new Error('Use um identificador com até 32 letras, números, hífen ou sublinhado.');
+    if (!point.name || point.name.length>60 || !point.location || point.location.length>120) throw new Error('Preencha nome e localização dentro dos limites indicados.');
+    if (existing.some(p=>p.id.toUpperCase()===point.id)) throw new Error('Já existe um ponto com esse identificador.');
+    return point;
+  }
+  function csv(rows, point) {
+    const escape = v => '"' + String(v == null ? '' : v).replace(/"/g,'""') + '"';
+    const header=['data_utc','variavel','valor','evento','hora_estimada'];
+    if(point) header.unshift('ponto_id','ponto_nome','localizacao');
+    return '\uFEFF' + [header].concat(normalize(rows).map(r=>[
+      ...(point ? [point.id,point.name,point.location] : []),
+      r.time, r.variable, r.value, r.metadata && r.metadata.event_id,
+      r.variable === 'coleta' ? !!(r.metadata && r.metadata.hora_estimada) : ''
+    ])).map(r=>r.map(escape).join(';')).join('\r\n');
+  }
+  return {status, fillPercent, normalize, summarize, CollectionDetector, AlertDetector, buildUrl, fleet, validatePoint, csv};
+});
+</script><script>(function(root,factory){
+  const api=factory(root);
+  if(typeof module==='object'&&module.exports)module.exports=api;
+  else root.EcoTransport=api;
+})(typeof globalThis!=='undefined'?globalThis:this,function(root){
+  'use strict';
+  const allowed=new Set(['https://api.us-e1.tago.io','https://api.eu-w1.tago.io']);
+  function canonical(value){
+    try{
+      let raw=String(value);
+      // iOS Web.Url encodes an address before reporting it back in GotText.
+      // This transport only uses controlled query values (dates and names).
+      for(let i=0;i<2&&/%[0-9a-f]{2}/i.test(raw);i++)raw=decodeURIComponent(raw);
+      const parsed=new URL(raw);
+      const entries=Array.from(parsed.searchParams.entries()).sort((a,b)=>a[0].localeCompare(b[0])||a[1].localeCompare(b[1]));
+      return parsed.origin+parsed.pathname+'?'+entries.map(([key,val])=>key+'='+val).join('&');
+    }catch(e){return null;}
+  }
+  function nativeUrl(value,time){
+    const parsed=new URL(value);
+    if(!allowed.has(parsed.origin)||parsed.protocol!=='https:'||parsed.pathname!=='/data')throw new Error('Endereco de consulta invalido.');
+    // A documented date parameter distinguishes requests without a URL fragment.
+    // Provide raw [] and ISO dates: iOS applies its own URL encoding once.
+    parsed.searchParams.set('end_date',new Date(time).toISOString());
+    const entries=Array.from(parsed.searchParams.entries());
+    for(const [key,val] of entries){
+      if(!/^[a-z_\[\]]+$/.test(key)||!/^[-a-zA-Z0-9:._]+$/.test(val))throw new Error('Parametros de consulta invalidos.');
+    }
+    return parsed.origin+parsed.pathname+'?'+entries.map(([key,val])=>key+'='+val).join('&');
+  }
+  function create(options={}){
+    const now=options.now||(()=>Date.now());
+    const setTimer=options.setTimer||((fn,delay)=>root.setTimeout(fn,delay));
+    const clearTimer=options.clearTimer||(id=>root.clearTimeout(id));
+    const getBridge=options.getBridge||(()=>root.AppInventor);
+    const timeoutMs=options.timeoutMs||20000;
+    let pending=null,lastTime=0;
+    function finish(error,result){
+      if(!pending)return;
+      const request=pending;pending=null;clearTimer(request.timer);
+      if(error)request.reject(error);else request.resolve(result);
+    }
+    function matches(source){
+      if(!pending)return false;
+      const key=canonical(source);
+      if(!key||key!==pending.key){pending.mismatches++;return false;}
+      return true;
+    }
+    function request(url,secret){
+      if(pending)return Promise.reject(new Error('Uma consulta ainda esta em andamento.'));
+      return new Promise((resolve,reject)=>{
+        const bridge=getBridge();
+        if(!bridge||typeof bridge.setWebViewString!=='function')return reject(new Error('A ponte do Companion nao esta disponivel. Reconecte o projeto atualizado.'));
+        let target;
+        try{lastTime=Math.max(now(),lastTime+1);target=nativeUrl(url,lastTime);}catch(error){reject(error);return;}
+        pending={key:canonical(target),resolve,reject,timer:null,started:false,mismatches:0};
+        pending.timer=setTimer(()=>{
+          const text=pending.mismatches?'A resposta recebida nao correspondeu a consulta. Reconecte ao projeto EcoColeta V4.':pending.started?
+            'A consulta foi iniciada, mas nao houve resposta. Verifique a internet e tente novamente.':
+            'O Companion nao confirmou o inicio da consulta. Reconecte ao projeto EcoColeta V4 e tente novamente.';
+          finish(new Error(text));
+        },timeoutMs);
+        try{bridge.setWebViewString(JSON.stringify([target,secret]));}
+        catch(error){finish(new Error('Falha ao iniciar a consulta pelo Companion. Reconecte o projeto atualizado.'));}
+      });
+    }
+    function ack(payload){
+      if(Array.isArray(payload)&&matches(payload[0]))pending.started=true;
+    }
+    function receive(payload){
+      if(!Array.isArray(payload)||payload.length<3||!matches(payload[0]))return;
+      const code=Number(payload[1]);
+      if(!Number.isFinite(code)||code<200||code>=300){finish(new Error('A plataforma retornou HTTP '+code+'. Confira token, regiao e limites da conta.'));return;}
+      try{finish(null,typeof payload[2]==='string'?JSON.parse(payload[2]):payload[2]);}
+      catch(error){finish(new Error('A plataforma retornou um conteudo invalido.'));}
+    }
+    function fail(payload){
+      if(!pending||!Array.isArray(payload)||payload.length<2)return;
+      if(payload[0]&&!matches(payload[0]))return;
+      finish(new Error(String(payload[1]||'Falha na consulta nativa.')));
+    }
+    return {request,ack,receive,fail};
+  }
+  return {canonical,nativeUrl,create,...create()};
+});
+</script><script>(function() {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const C = EcoCore;
+  let mode = 'demo', hours = 24, rows = [], busy = false;
+  const defaultPoints=[
+    {id:'LIXEIRA_01',name:'Entrada principal',location:'Escola · acesso principal'},
+    {id:'LIXEIRA_02',name:'Pátio',location:'Escola · área de convivência'},
+    {id:'LIXEIRA_03',name:'Cantina',location:'Escola · praça de alimentação'}
+  ];
+  const storageKey='ecocoleta.points.v2';
+  function loadPoints(){
+    try {
+      const saved=JSON.parse(localStorage.getItem(storageKey));
+      if(!Array.isArray(saved)||!saved.length) return defaultPoints;
+      const valid=[];
+      saved.forEach(candidate=>{try{const point=C.validatePoint(candidate,valid);point.region=candidate.region;valid.push(point);}catch(e){}});
+      return valid.length?valid:defaultPoints;
+    }catch(e){return defaultPoints;}
+  }
+  const points=loadPoints();
+  const states=new Map(points.map((point,i)=>[point.id,{
+    demoRows:[],cloudRows:[],demoLevel:i===1?85:i===2?96:35,collections:0,
+    detector:new C.CollectionDetector(),token:'',
+    region:['https://api.us-e1.tago.io','https://api.eu-w1.tago.io'].includes(point.region)?point.region:'https://api.us-e1.tago.io',
+    capped:false,lastCloudSuccess:null,lastError:''
+  }]));
+  let selectedId=points[0].id;
+  const alertStates=new Map(),notices=[];
+  let toastTimer=null;
+  const selectedPoint=()=>points.find(p=>p.id===selectedId);
+  const selectedState=()=>states.get(selectedId);
+  function savePoints(){
+    try{localStorage.setItem(storageKey,JSON.stringify(points.map(p=>({id:p.id,name:p.name,location:p.location,region:states.get(p.id).region}))));return true;}
+    catch(e){return false;}
+  }
+  const nativeBridge = !!window.AppInventor;
+  const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const timestamp = time => new Date(time).toLocaleString('pt-BR', {hour12:false});
+  const number = value => value == null ? '—' : value.toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const periodName = () => hours === 1 ? 'Última hora' : hours === 24 ? 'Últimas 24 horas' : 'Últimos 7 dias';
+
+  function observeAlert(point,source,summary){
+    if(!summary.latest||summary.sensorFailed||summary.stale)return;
+    const key=source+':'+point.id;
+    if(!alertStates.has(key))alertStates.set(key,new C.AlertDetector());
+    const severity=alertStates.get(key).observe(summary.latest.value,true,Date.parse(summary.latest.time));
+    if(!severity)return;
+    const notice={pointId:point.id,name:point.name,source,severity,level:summary.latest.value,time:new Date().toISOString()};
+    notice.title=(severity==='critical'?'Crítico':'Atenção')+' · '+point.name;
+    notice.message='Preenchimento estimado de '+number(notice.level)+'. '+(severity==='critical'?'Priorize a coleta.':'Planeje a coleta.');
+    notices.unshift(notice);if(notices.length>100)notices.pop();
+    const toast=$('alertToast');
+    if(!$('internalNotices').checked)return;
+    if(!toast.classList.contains('hidden')&&toast.classList.contains('critical')&&severity!=='critical')return;
+    if(toastTimer)clearTimeout(toastTimer);
+    $('toastTitle').textContent=notice.title;
+    $('toastText').textContent=notice.message+(source==='demo'?' Simulação: nenhum SMS ou push real foi enviado.':' Aviso interno; confira entregas no provedor.');
+    toast.className='alert-toast'+(severity==='critical'?' critical':'');
+    toastTimer=setTimeout(()=>toast.classList.add('hidden'),12000);
+  }
+  function renderNotices(){
+    const visible=notices.filter(n=>n.source===mode);
+    $('noticeCount').textContent=visible.length;
+    $('noticeList').innerHTML=visible.length?visible.slice(0,12).map(n=>'<div class="notice-row"><strong>'+esc(n.title)+'</strong><p>'+esc(n.message)+'</p><small>'+esc(timestamp(n.time))+' · '+(n.source==='demo'?'SIMULAÇÃO':'AVISO INTERNO')+'</small></div>').join(''):'<p class="muted">Nenhum aviso interno nesta sessão e modo.</p>';
+  }
+
+  function syncSelectors(){
+    const options=points.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.name)+' · '+esc(p.id)+'</option>').join('');
+    $('pointSelect').innerHTML=options;$('configPoint').innerHTML=options;
+    $('pointSelect').value=selectedId;$('configPoint').value=selectedId;
+    $('region').value=selectedState().region;$('token').value=selectedState().token;
+    $('demoLevel').value=selectedState().demoLevel;$('demoValue').textContent=selectedState().demoLevel+'%';
+  }
+  function choosePoint(id){
+    if(!states.has(id))return;
+    selectedId=id;syncSelectors();$('csvPanel').classList.add('hidden');render();
+  }
+  function fleetData(){
+    return C.fleet(points.map(p=>({...p,rows:mode==='demo'?states.get(p.id).demoRows:states.get(p.id).cloudRows,
+      error:mode==='cloud'?states.get(p.id).lastError:''})),Date.now()-hours*3600000);
+  }
+  function renderFleet(){
+    const fleet=fleetData();
+    $('pointCount').textContent=points.length;
+    $('priorityCount').textContent=fleet.filter(p=>p.priority<2).length;
+    $('unknownCount').textContent=fleet.filter(p=>p.unavailable).length;
+    $('pointList').innerHTML=fleet.map(p=>{
+      const n=p.summary.latest?.value;
+      const label=mode==='cloud'&&!states.get(p.id).token?'Token não configurado':p.label;
+      return '<button type="button" class="point-card '+(p.id===selectedId?'selected':'')+'" data-point="'+esc(p.id)+'" aria-pressed="'+(p.id===selectedId)+'"><div class="point-card-top"><strong class="point-card-name">'+esc(p.name)+'</strong><strong class="point-card-level">'+(n==null?'—':Math.round(n)+'%')+'</strong></div><small>'+esc(p.location)+'</small><div class="point-card-bottom"><span class="badge '+(p.unavailable?'warn':n>=90?'danger':n>=80?'warn':'soft')+'">'+esc(label)+'</span><small>'+esc(p.id)+'</small></div></button>';
+    }).join('');
+    $('fleetReport').innerHTML=fleet.map(p=>'<div class="comparison-row"><strong>'+esc(p.name)+'</strong><small>'+esc(p.label)+'</small><div class="comparison-values"><span>Nível: '+number(p.summary.latest?.value)+'</span><span>Média: '+number(p.summary.average)+'</span><span>Coletas: '+p.summary.collections.length+'</span></div></div>').join('');
+    $('refreshAllButton').disabled=busy;
+    $('refreshAllButton').textContent=busy?'Atualizando…':'Atualizar todos';
+  }
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
+    document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+
+  function drawChart(levels) {
+    if (!levels.length) { $('chart').innerHTML = '<div class="chart-empty">Ainda não há medições neste período.</div>'; return; }
+    const width=450, height=140, padding=26;
+    const first=Date.parse(levels[0].time), span=Math.max(1,Date.parse(levels[levels.length-1].time)-first);
+    const points=levels.map(r=>[(padding+(Date.parse(r.time)-first)/span*(width-padding-4)).toFixed(1),(height-20-r.value/100*(height-32)).toFixed(1)]);
+    let svg='<svg viewBox="0 0 450 140" aria-hidden="true">';
+    [0,50,80,100].forEach(n=>{const y=height-20-n/100*(height-32);svg+='<line x1="26" y1="'+y+'" x2="446" y2="'+y+'" stroke="'+(n===80?'#cf9c65':'#e5ecdf')+'" stroke-dasharray="3 4"/><text x="0" y="'+(y+3)+'" fill="#7b8e75" font-size="8">'+n+'</text>';});
+    if(points.length>1) svg+='<polygon points="'+points[0][0]+',120 '+points.map(p=>p.join(',')).join(' ')+' '+points[points.length-1][0]+',120" fill="#eaf3db"/><polyline points="'+points.map(p=>p.join(',')).join(' ')+'" fill="none" stroke="#5f9342" stroke-width="2.5" stroke-linejoin="round"/>';
+    else svg+='<circle cx="'+points[0][0]+'" cy="'+points[0][1]+'" r="4" fill="#5f9342"/>';
+    const clock=t=>new Date(t).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+    svg+='<text x="26" y="137" fill="#7b8e75" font-size="8">'+clock(first)+'</text><text x="446" y="137" text-anchor="end" fill="#7b8e75" font-size="8">'+clock(Date.parse(levels[levels.length-1].time))+'</text></svg>';
+    $('chart').innerHTML=svg;
+  }
+
+  function render() {
+    const point=selectedPoint(),state=selectedState();
+    const {capped,lastCloudSuccess,lastError}=state;
+    rows = mode === 'demo' ? state.demoRows : state.cloudRows;
+    $('selectedPointName').textContent=point.name;
+    $('selectedLocation').textContent=point.location+' · '+point.id;
+    document.querySelectorAll('.selected-point-label').forEach(e=>e.textContent=point.name+' · '+point.location);
+    renderFleet();
+    renderNotices();
+    const s=C.summarize(rows,Date.now()-hours*3600000), latest=s.latest;
+    const val=latest ? latest.value : null;
+    const unavailable = s.sensorFailed || s.stale;
+    const label=s.sensorFailed?'Falha no sensor':s.stale?'Sem leitura recente':C.status(val);
+    $('modeBadge').textContent=mode==='demo'?'SIMULAÇÃO':'NUVEM';
+    $('statusBadge').textContent=label;
+    $('statusBadge').className='badge '+(unavailable?'warn':val>=90?'danger':val>=80?'warn':'soft');
+    $('levelValue').textContent=val==null?'—':Math.round(val);
+    $('levelDescription').textContent=unavailable && latest?'Última leitura conhecida':label==='Normal'?'Capacidade disponível':label==='Atenção'?'Planejar a coleta':label==='Crítico'?'Priorizar a coleta':'Aguardando dados';
+    $('binFill').style.height=(val||0)+'%'; $('progressFill').style.width=(val||0)+'%';
+    const color=unavailable?'#c5cec1':val>=90?'#e18a75':val>=80?'#ebc77c':'#b8da7c';
+    $('binFill').style.background=color; $('progressFill').style.background=color;
+    $('collectionCount').textContent=s.collections.length;
+    $('lastTime').textContent=latest?new Date(latest.time).toLocaleTimeString('pt-BR',{hour12:false}):'—';
+    $('connectionText').textContent=s.sensorFailed?'Falha no sensor':s.stale?'Sem leitura há mais de 2 min':mode==='demo'?'Leitura simulada':'Leitura recente';
+    $('demoPanel').classList.toggle('hidden',mode!=='demo');
+    $('refreshButton').disabled=busy;
+    $('refreshButton').textContent=busy?'Consultando a plataforma…':'Atualizar dados';
+    const message=$('message'); message.className='notice';
+    if(mode==='demo') message.textContent='Demonstração local. Nenhum SMS ou e-mail é enviado neste modo.';
+    else if(lastError){ message.textContent=lastError+(lastCloudSuccess?' Os dados anteriores foram mantidos.':'');message.classList.add('error'); }
+    else if(s.sensorFailed){message.textContent='O dispositivo informou uma falha no sensor. Confira a montagem; o nível mostrado é uma leitura anterior.';message.classList.add('warning');}
+    else if(s.stale){message.textContent='Não há leitura recente. Confira se o dispositivo está enviando dados e se o token e a região estão corretos.';message.classList.add('warning');}
+    else message.textContent='Dados recebidos da TagoIO. Consulta: '+timestamp(lastCloudSuccess)+'. SMS e e-mail são executados pela nuvem.';
+    document.querySelectorAll('.period-label').forEach(e=>e.textContent=periodName());
+    $('limitWarning').classList.toggle('hidden',mode==='demo'||!capped);
+    $('collectionList').innerHTML=s.collections.length?s.collections.slice().reverse().map(r=>'<div class="data-row"><div><strong>Coleta provável #'+esc(r.value)+'</strong><small>'+esc(timestamp(r.time))+(r.metadata&&r.metadata.hora_estimada?' · horário do envio':'')+'</small></div><span class="badge soft">ESTIMADA</span></div>').join(''):'<p class="muted">Nenhuma coleta provável no período.</p>';
+    $('readingsList').innerHTML=s.levels.length?s.levels.slice(-30).reverse().map(r=>'<div class="data-row"><span>'+esc(timestamp(r.time))+'</span><strong>'+number(r.value)+'</strong></div>').join(''):'<p class="muted">Nenhuma leitura no período.</p>';
+    $('minLevel').textContent=number(s.min);$('maxLevel').textContent=number(s.max);$('avgLevel').textContent=number(s.average);$('alertCount').textContent=s.alerts;
+    $('reportSource').textContent=mode==='demo'?'Dados simulados localmente. Nenhum envio de alerta foi realizado.':(capped?'Amostra limitada a 500 registros; o período pode estar incompleto.':'Dados recebidos da plataforma para o período selecionado.')+(lastError?' A última consulta falhou; os registros podem estar desatualizados.':'');
+    $('reportText').textContent=s.levels.length?'No ponto '+point.name+', foram analisadas '+s.levels.length+' medições, com nível médio de '+number(s.average)+'. Houve '+s.collections.length+' coleta(s) provável(is) e '+s.alerts+' leitura(s) a partir de 80% de preenchimento.':'Ainda não há medições para gerar o resumo deste ponto.';
+    drawChart(s.levels);
+  }
+
+  function demoTick() {
+    if(mode!=='demo') return;
+    const time=new Date().toISOString();
+    points.forEach(point=>{
+      const s=states.get(point.id),value=s.demoLevel;
+      s.demoRows.push({variable:'nivel',value,time},{variable:'sensor_ok',value:1,time});
+      if(s.detector.update(value)) {
+        s.collections++;
+        s.demoRows.push({variable:'coleta',value:s.collections,time,metadata:{event_id:'DEMO-'+point.id+'-'+s.collections,tipo:'provavel',hora_estimada:false}});
+      }
+      if(s.demoRows.length>2000)s.demoRows.splice(0,s.demoRows.length-2000);
+      observeAlert(point,'demo',C.summarize(s.demoRows,Date.now()-hours*3600000));
+    });
+    render();
+  }
+
+  function requestCloud(url, secret) {
+    if(nativeBridge) return window.EcoTransport.request(url,secret);
+    const control=new AbortController(), timer=setTimeout(()=>control.abort(),18000);
+    return fetch(url,{headers:{'Device-Token':secret},signal:control.signal})
+      .then(r=>{if(!r.ok) throw new Error('A plataforma retornou HTTP '+r.status+'. Confira token, região e limites da conta.');return r.json();})
+      .finally(()=>clearTimeout(timer));
+  }
+
+  async function readPoint(id){
+    const state=states.get(id);
+    if(!state.token){state.lastError='Informe o token deste ponto na aba Ajustes.';return false;}
+    try{
+      const result=await requestCloud(C.buildUrl(state.region,hours),state.token);
+      if(result.status!==true||!Array.isArray(result.result))throw new Error('A plataforma não confirmou a consulta.');
+      const received=C.normalize(result.result);
+      const latestLevel=received.filter(row=>row.variable==='nivel').slice(-1)[0];
+      const origin=latestLevel&&latestLevel.metadata&&latestLevel.metadata.ponto_id;
+      if(origin&&origin!==id)throw new Error('Os dados são de '+origin+', mas este ponto é '+id+'. Confira o token do dispositivo.');
+      state.cloudRows=received.filter(row=>!row.metadata||!row.metadata.ponto_id||row.metadata.ponto_id===id);
+      state.capped=result.result.length>=500;
+      state.lastCloudSuccess=Date.now();state.lastError='';
+      observeAlert(points.find(point=>point.id===id),'cloud',C.summarize(state.cloudRows,Date.now()-hours*3600000));
+      return true;
+    }catch(e){state.lastError=e.name==='AbortError'?'Tempo de consulta esgotado.':e.message;return false;}
+  }
+  async function refresh() {
+    if(mode==='demo'){demoTick();return;}
+    if(busy) return;
+    busy=true;render();
+    try{await readPoint(selectedId);}finally{busy=false;render();}
+  }
+  async function refreshAll(){
+    if(mode==='demo'){demoTick();$('fleetMessage').textContent='Todos os pontos usam dados simulados.';return;}
+    if(busy)return;
+    busy=true;let successes=0;render();
+    try{
+      // One request at a time: the native Web component is shared by all devices.
+      for(const point of points){
+        $('fleetMessage').textContent='Consultando '+point.name+'…';
+        if(await readPoint(point.id))successes++;
+        render();
+      }
+    }finally{
+      busy=false;$('fleetMessage').textContent=successes+' de '+points.length+' ponto(s) consultado(s) com sucesso. Confira os demais cartões.';render();
+    }
+  }
+
+  $('settingsForm').addEventListener('submit',event=>{
+    event.preventDefault();
+    if(busy){$('settingsMessage').textContent='Aguarde a consulta atual terminar.';return;}
+    const next=$('mode').value, secret=$('token').value.trim(),id=$('configPoint').value;
+    if(next==='cloud'&&!secret){$('settingsMessage').textContent='Cole o token do dispositivo antes de conectar.';return;}
+    const duplicate=secret&&points.find(point=>point.id!==id&&states.get(point.id).token===secret);
+    if(next==='cloud'&&duplicate){$('settingsMessage').textContent='Esse token já está configurado em '+duplicate.name+'. Cada lixeira precisa de um dispositivo e token próprios.';return;}
+    const state=states.get(id);
+    if(secret!==state.token||state.region!==$('region').value){state.cloudRows=[];state.lastCloudSuccess=null;state.lastError='';alertStates.delete('cloud:'+id);}
+    mode=next;state.token=secret;state.region=$('region').value;$('fleetMessage').textContent='';
+    savePoints();choosePoint(id);
+    $('settingsMessage').textContent=next==='demo'?'Demonstração ativada.':'Conexão configurada para esta sessão.';
+    showPage('monitor');refresh();
+  });
+  $('pointSelect').addEventListener('change',()=>choosePoint($('pointSelect').value));
+  $('configPoint').addEventListener('change',()=>{
+    const state=states.get($('configPoint').value);$('token').value=state.token;$('region').value=state.region;
+  });
+  $('pointList').addEventListener('click',event=>{
+    const card=event.target.closest('[data-point]');if(card)choosePoint(card.dataset.point);
+  });
+  $('pointForm').addEventListener('submit',event=>{
+    event.preventDefault();
+    if(busy){$('pointFormMessage').textContent='Aguarde a consulta atual terminar.';return;}
+    try{
+      const point=C.validatePoint({id:$('newPointId').value,name:$('newPointName').value,location:$('newPointLocation').value},points);
+      points.push(point);states.set(point.id,{demoRows:[],cloudRows:[],demoLevel:35,collections:0,detector:new C.CollectionDetector(),token:'',region:'https://api.us-e1.tago.io',capped:false,lastCloudSuccess:null,lastError:''});
+      const stored=savePoints();choosePoint(point.id);if(mode==='demo')demoTick();
+      $('pointForm').reset();$('pointFormMessage').textContent='Ponto cadastrado.'+(stored?' Nomes e locais salvos neste aparelho.':' Cadastro mantido somente nesta sessão.');
+    }catch(e){$('pointFormMessage').textContent=e.message;}
+  });
+  $('refreshButton').addEventListener('click',refresh);
+  $('refreshAllButton').addEventListener('click',refreshAll);
+  $('period').addEventListener('change',()=>{
+    if(busy){$('period').value=String(hours);return;}
+    hours=Number($('period').value);
+    if(mode==='cloud'){states.forEach(s=>{s.cloudRows=[];s.capped=false;});refreshAll();}else render();
+  });
+  $('demoLevel').addEventListener('input',()=>{selectedState().demoLevel=Number($('demoLevel').value);$('demoValue').textContent=$('demoLevel').value+'%';});
+  function setDemo(value){selectedState().demoLevel=value;$('demoLevel').value=value;$('demoValue').textContent=value+'%';}
+  $('fillButton').addEventListener('click',()=>setDemo(85));
+  $('emptyButton').addEventListener('click',()=>setDemo(10));
+  $('criticalButton').addEventListener('click',()=>setDemo(97));
+  $('dismissToast').addEventListener('click',()=>$('alertToast').classList.add('hidden'));
+  $('internalNotices').addEventListener('change',()=>{if(!$('internalNotices').checked)$('alertToast').classList.add('hidden');});
+  $('csvButton').addEventListener('click',()=>{
+    const csv=C.csv(C.summarize(rows,Date.now()-hours*3600000).data,selectedPoint());
+    $('csvText').value=csv;$('csvPanel').classList.remove('hidden');
+    if(!nativeBridge){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.href=url;a.download='EcoColeta_'+selectedId+'_'+(mode==='demo'?'simulacao':'nuvem')+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+  });
+  setInterval(demoTick,1000);
+  setInterval(()=>{if(mode==='cloud'&&$('autoRefresh').checked)refreshAll();},60000);
+  setInterval(()=>{if(mode==='cloud')render();},5000);
+  syncSelectors();demoTick();
+})();
+</script>
+</body>
+</html>
