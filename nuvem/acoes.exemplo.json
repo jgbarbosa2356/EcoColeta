@@ -1,0 +1,41 @@
+[
+  {
+    "name": "EcoColeta - Critico - Entrada principal",
+    "active": false,
+    "type": "condition",
+    "lock": false,
+    "trigger_when_unlock": false,
+    "trigger": [
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_ENTRADA", "variable": "nivel", "is": ">", "value": "90", "value_type": "number", "unlock": false},
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_ENTRADA", "variable": "nivel", "is": "=", "value": "90", "value_type": "number", "unlock": false},
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_ENTRADA", "variable": "nivel", "is": "<", "value": "85", "value_type": "number", "unlock": true}
+    ],
+    "action": {"type": "notification", "subject": "EcoColeta: Entrada principal critica", "message": "Entrada principal em nivel critico: $VALUE$%. Priorize a coleta."}
+  },
+  {
+    "name": "EcoColeta - Critico - Patio",
+    "active": false,
+    "type": "condition",
+    "lock": false,
+    "trigger_when_unlock": false,
+    "trigger": [
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_PATIO", "variable": "nivel", "is": ">", "value": "90", "value_type": "number", "unlock": false},
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_PATIO", "variable": "nivel", "is": "=", "value": "90", "value_type": "number", "unlock": false},
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_PATIO", "variable": "nivel", "is": "<", "value": "85", "value_type": "number", "unlock": true}
+    ],
+    "action": {"type": "notification", "subject": "EcoColeta: Patio critico", "message": "Patio em nivel critico: $VALUE$%. Priorize a coleta."}
+  },
+  {
+    "name": "EcoColeta - Critico - Cantina",
+    "active": false,
+    "type": "condition",
+    "lock": false,
+    "trigger_when_unlock": false,
+    "trigger": [
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_CANTINA", "variable": "nivel", "is": ">", "value": "90", "value_type": "number", "unlock": false},
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_CANTINA", "variable": "nivel", "is": "=", "value": "90", "value_type": "number", "unlock": false},
+      {"device": "SUBSTITUA_PELO_DEVICE_ID_CANTINA", "variable": "nivel", "is": "<", "value": "85", "value_type": "number", "unlock": true}
+    ],
+    "action": {"type": "notification", "subject": "EcoColeta: Cantina critica", "message": "Cantina em nivel critico: $VALUE$%. Priorize a coleta."}
+  }
+]
