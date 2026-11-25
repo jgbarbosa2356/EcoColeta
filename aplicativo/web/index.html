@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#133f32"><title>EcoColeta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand"><span class="brand-icon" aria-hidden="true">↻</span><div><strong>EcoColeta</strong><small>MONITORAMENTO INTELIGENTE</small></div></div>
+    <span id="modeBadge" class="badge">SIMULAÇÃO</span>
+  </header>
+  <aside id="alertToast" class="alert-toast hidden" role="alert" aria-live="assertive"><div><strong id="toastTitle"></strong><p id="toastText"></p></div><button id="dismissToast" type="button" aria-label="Fechar aviso">×</button></aside>
+  <main>
+    <div class="point-switcher"><label for="pointSelect">Ponto em detalhe</label><select id="pointSelect" aria-label="Selecionar ponto de coleta"></select></div>
+    <section class="page active" id="monitor" aria-label="Monitoramento">
+      <div class="eyebrow">VISÃO GERAL</div><h1>Vários pontos.<br>Uma visão da coleta.</h1>
+      <div class="fleet-metrics"><article><strong id="pointCount">3</strong><small>Pontos</small></article><article><strong id="priorityCount">0</strong><small>Em alerta</small></article><article><strong id="unknownCount">0</strong><small>Sem leitura válida</small></article></div>
+      <article class="panel"><div class="panel-heading"><h2>Prioridade de coleta</h2><button type="button" id="refreshAllButton" class="secondary">Atualizar todos</button></div><p class="muted">Críticos e em atenção aparecem primeiro. Selecione um ponto para consultar seus dados.</p><div id="pointList"></div><p id="fleetMessage" class="muted" role="status"></p></article>
+      <article class="panel"><div class="panel-heading"><h2>Avisos desta sessão</h2><span id="noticeCount" class="badge">0</span></div><p class="muted">Avisos internos do EcoColeta. Não confirmam o envio de SMS ou push pela nuvem.</p><div id="noticeList"></div></article>
+      <div class="eyebrow">PONTO SELECIONADO</div><h2 id="selectedPointName" class="selected-point-name">Entrada principal</h2>
+      <div id="selectedLocation" class="location">Escola · acesso principal</div>
+      <div id="message" class="notice" role="status">Demonstração local. Nenhum SMS ou e-mail é enviado neste modo.</div>
+      <article class="level-card">
+        <div class="card-top"><span>Preenchimento estimado</span><span id="statusBadge" class="badge soft">Normal</span></div>
+        <div class="level-body">
+          <div class="bin" aria-hidden="true"><div class="lid"></div><div class="bin-body"><div id="binFill" class="bin-fill"></div><span>↻</span></div><div class="wheels"><i></i><i></i></div></div>
+          <div class="level-number"><div><span id="levelValue">—</span><span class="percent">%</span></div><p id="levelDescription">Aguardando leitura</p></div>
+        </div>
+        <div class="progress"><div id="progressFill"></div><i style="left:80%"></i></div>
+        <div class="scale"><span>Vazia</span><span>Alerta em 80%</span><span>Cheia</span></div>
+      </article>
+      <div class="metrics"><article><span class="metric-label">COLETAS PROVÁVEIS</span><strong id="collectionCount">0</strong><small>No período selecionado</small></article><article><span class="metric-label">ÚLTIMA LEITURA</span><strong class="time" id="lastTime">—</strong><small id="connectionText">Aguardando dados</small></article></div>
+      <article class="panel"><div class="panel-heading"><h2>Evolução do nível</h2><span class="muted period-label">Últimas 24 horas</span></div><div id="chart" class="chart" role="img" aria-label="Gráfico do nível de preenchimento"></div><small class="muted">Estimativa pela altura dos resíduos, sem medição de peso ou volume.</small></article>
+      <article id="demoPanel" class="panel demo-panel"><div class="panel-heading"><h2>Experimente o protótipo</h2><span class="badge">DEMO</span></div><label for="demoLevel">Nível simulado <strong id="demoValue">35%</strong></label><input id="demoLevel" type="range" min="0" max="100" value="35"><div class="button-row"><button id="fillButton" class="secondary">Encher até 85%</button><button id="emptyButton" class="secondary">Esvaziar até 10%</button></div><button id="criticalButton" class="critical-button wide" type="button">Testar crítico em 97%</button><small>Os testes criam avisos dentro do aplicativo, sem enviar mensagens reais. Para registrar uma coleta provável, passe de pelo menos 50% para até 20% e aguarde três leituras consecutivas.</small></article>
+      <button class="primary wide" id="refreshButton">Atualizar dados</button>
+    </section>
+    <section class="page" id="history" aria-label="Histórico">
+      <div class="eyebrow">ACOMPANHAMENTO</div><h1>Histórico de<br>leituras e coletas.</h1><p class="muted selected-point-label"></p>
+      <div class="panel"><label for="period">Período consultado</label><select id="period"><option value="1">Última hora</option><option value="24" selected>Últimas 24 horas</option><option value="168">Últimos 7 dias</option></select><p class="muted">A consulta retorna até 500 registros entre nível, sensor e coletas. Se esse limite for atingido, reduza o período. Os relatórios usam somente os registros recebidos.</p></div>
+      <div id="limitWarning" class="notice warning hidden">Limite de 500 registros atingido. O período pode estar incompleto; reduza o intervalo.</div>
+      <article class="panel"><h2>Coletas prováveis</h2><p class="muted">Estimadas por queda persistente do nível. Não representam confirmação de uma equipe de coleta.</p><div id="collectionList"></div></article>
+      <article class="panel"><h2>Últimas medições</h2><div id="readingsList"></div></article>
+    </section>
+    <section class="page" id="report" aria-label="Relatório">
+      <div class="eyebrow">DADOS PARA DECIDIR</div><h1>Relatório do<br>período.</h1><p class="muted selected-point-label"></p><p class="muted period-label">Últimas 24 horas</p>
+      <article class="panel"><h2>Comparação dos pontos</h2><p class="muted">Coletas e média se referem aos registros recebidos no período. A situação de cada ponto depende da última consulta.</p><div id="fleetReport"></div></article>
+      <div id="reportSource" class="notice">Dados simulados localmente.</div>
+      <div class="metrics"><article><span class="metric-label">MENOR NÍVEL</span><strong id="minLevel">—</strong></article><article><span class="metric-label">MAIOR NÍVEL</span><strong id="maxLevel">—</strong></article><article><span class="metric-label">MÉDIA DAS LEITURAS</span><strong id="avgLevel">—</strong></article><article><span class="metric-label">LEITURAS ≥ 80%</span><strong id="alertCount">0</strong></article></div>
+      <article class="panel"><h2>Resumo para apresentação</h2><p id="reportText">Aguardando dados.</p><p class="muted">A média é calculada sobre as amostras recebidas. A quantidade de leituras em alerta não equivale a mensagens enviadas ou tempo em alerta.</p></article>
+      <button id="csvButton" class="primary wide">Gerar CSV dos registros</button>
+      <div id="csvPanel" class="panel hidden"><label for="csvText">CSV para copiar</label><textarea id="csvText" rows="8" readonly></textarea><small>Selecione e copie o texto. No navegador do computador, também é oferecido um download.</small></div>
+    </section>
+    <section class="page" id="settings" aria-label="Configurações">
+      <div class="eyebrow">CONEXÃO</div><h1>Do protótipo<br>para a nuvem.</h1>
+      <article class="panel"><h2>Notificação e SMS</h2><span class="badge warn">ATIVAÇÃO EXTERNA PENDENTE</span><p>O EcoColeta avisa na tela enquanto está aberto. No iPhone, o push em segundo plano será recebido pelo aplicativo TagoIO, com a mesma conta da nuvem. O SMS será enviado pela Twilio.</p><label class="checkbox"><input id="internalNotices" type="checkbox" checked> Exibir avisos internos enquanto o EcoColeta está aberto</label><details><summary>Como ativar os envios reais</summary><ol><li>Crie sua conta TagoIO e instale o app TagoIO no celular.</li><li>Entre na mesma conta e autorize as notificações do aplicativo.</li><li>Crie ou habilite a Twilio para SMS e configure os Secrets na TagoIO.</li><li>Configure e teste as regras descritas na pasta nuvem do projeto: atenção em 80% a menos de 90% e crítico a partir de 90%.</li><li>Valide o push com o EcoColeta fechado e o SMS no telefone de teste.</li></ol><p class="muted">O pacote não contém contas, créditos de SMS ou confirmação de entrega. Os envios externos funcionam pelas regras da nuvem, sem depender deste botão de avisos internos.</p></details></article>
+      <form id="settingsForm" class="panel">
+        <label for="configPoint">Configurar dispositivo do ponto</label><select id="configPoint"></select>
+        <label for="mode">Origem dos dados</label><select id="mode"><option value="demo">Demonstração local</option><option value="cloud">Dispositivo via TagoIO</option></select>
+        <label for="region">Região da conta TagoIO</label><select id="region"><option value="https://api.us-e1.tago.io">Estados Unidos · us-e1</option><option value="https://api.eu-w1.tago.io">Europa · eu-w1</option></select>
+        <label for="token">Token do dispositivo</label><input id="token" type="password" autocomplete="off" placeholder="Cole o Device-Token aqui">
+        <p class="muted">O token fica somente na memória desta sessão. Digite novamente ao reabrir. Use um dispositivo de demonstração e nunca um token de perfil.</p>
+        <p class="muted">Cada ponto usa seu próprio dispositivo, token e região. O mesmo token não pode ser usado em duas lixeiras. O modo Nuvem vale para o painel inteiro; pontos sem token ficam identificados como não configurados.</p>
+        <label class="checkbox"><input id="autoRefresh" type="checkbox"> Atualizar todos os pontos a cada 60 segundos</label>
+        <button type="submit" class="primary wide">Aplicar e conectar</button><p id="settingsMessage" class="muted" role="status"></p>
+      </form>
+      <form id="pointForm" class="panel"><h2>Cadastrar ponto de coleta</h2><label for="newPointId">Identificador do ponto</label><input id="newPointId" type="text" maxlength="32" pattern="[A-Za-z0-9_-]+" placeholder="Ex.: LIXEIRA_04" required><label for="newPointName">Nome do ponto</label><input id="newPointName" type="text" maxlength="60" placeholder="Ex.: Biblioteca" required><label for="newPointLocation">Localização</label><input id="newPointLocation" type="text" maxlength="120" placeholder="Ex.: Bloco B · térreo" required><p class="muted">Cadastre um ponto por lixeira/dispositivo. Nomes e locais são salvos neste aparelho, quando o armazenamento local está disponível. Tokens e medições não são gravados.</p><button type="submit" class="primary wide">Cadastrar ponto</button><p id="pointFormMessage" class="muted" role="status"></p></form>
+      <article class="panel"><h2>Regras do protótipo</h2><div class="rule"><span>Normal</span><strong>Abaixo de 80%</strong></div><div class="rule"><span>Atenção</span><strong>De 80% a menos de 90%</strong></div><div class="rule"><span>Crítico</span><strong>A partir de 90%</strong></div><div class="rule"><span>Coleta provável</span><strong>≥ 50% para ≤ 20%</strong></div><p class="muted">São limites didáticos do projeto. SMS e e-mail são configurados na nuvem e podem depender de serviços pagos. O aplicativo não confirma a entrega dessas mensagens.</p></article>
+    </section>
+    <footer>EcoColeta v6.0 · Projeto de Internet das Coisas<br>Faculdade Nova Roma · Unidade 2</footer>
+  </main>
+  <nav aria-label="Navegação principal"><button class="active" data-page="monitor"><span aria-hidden="true">◉</span>Monitor</button><button data-page="history"><span aria-hidden="true">≡</span>Histórico</button><button data-page="report"><span aria-hidden="true">▤</span>Relatório</button><button data-page="settings"><span aria-hidden="true">⚙</span>Ajustes</button></nav>
+</div>
+<script src="core.js"></script><script src="transport.js"></script><script src="app.js"></script>
+</body>
+</html>
