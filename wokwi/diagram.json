@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "author": "EcoColeta - tres sensores",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 220,
+      "left": 330,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sensor1",
+      "top": -70,
+      "left": 0,
+      "attrs": {
+        "distance": "40"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 90,
+      "left": 80,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rled1",
+      "top": 140,
+      "left": 35,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rhigh1",
+      "top": 20,
+      "left": 150,
+      "attrs": {
+        "value": "1000"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rlow1",
+      "top": 60,
+      "left": 150,
+      "attrs": {
+        "value": "2000"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sensor2",
+      "top": -70,
+      "left": 300,
+      "attrs": {
+        "distance": "40"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 90,
+      "left": 380,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rled2",
+      "top": 140,
+      "left": 335,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rhigh2",
+      "top": 20,
+      "left": 450,
+      "attrs": {
+        "value": "1000"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rlow2",
+      "top": 60,
+      "left": 450,
+      "attrs": {
+        "value": "2000"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sensor3",
+      "top": -70,
+      "left": 600,
+      "attrs": {
+        "distance": "40"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 90,
+      "left": 680,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rled3",
+      "top": 140,
+      "left": 635,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rhigh3",
+      "top": 20,
+      "left": 750,
+      "attrs": {
+        "value": "1000"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rlow3",
+      "top": 60,
+      "left": 750,
+      "attrs": {
+        "value": "2000"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "sensor1:VCC",
+      "esp:VIN",
+      "red",
+      []
+    ],
+    [
+      "sensor1:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensor1:TRIG",
+      "esp:D5",
+      "green",
+      []
+    ],
+    [
+      "sensor1:ECHO",
+      "rhigh1:1",
+      "orange",
+      []
+    ],
+    [
+      "rhigh1:2",
+      "esp:D18",
+      "blue",
+      []
+    ],
+    [
+      "rhigh1:2",
+      "rlow1:1",
+      "blue",
+      []
+    ],
+    [
+      "rlow1:2",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D23",
+      "rled1:1",
+      "red",
+      []
+    ],
+    [
+      "rled1:2",
+      "led1:A",
+      "red",
+      []
+    ],
+    [
+      "led1:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensor2:VCC",
+      "esp:VIN",
+      "red",
+      []
+    ],
+    [
+      "sensor2:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensor2:TRIG",
+      "esp:D19",
+      "green",
+      []
+    ],
+    [
+      "sensor2:ECHO",
+      "rhigh2:1",
+      "orange",
+      []
+    ],
+    [
+      "rhigh2:2",
+      "esp:D21",
+      "blue",
+      []
+    ],
+    [
+      "rhigh2:2",
+      "rlow2:1",
+      "blue",
+      []
+    ],
+    [
+      "rlow2:2",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D22",
+      "rled2:1",
+      "red",
+      []
+    ],
+    [
+      "rled2:2",
+      "led2:A",
+      "red",
+      []
+    ],
+    [
+      "led2:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensor3:VCC",
+      "esp:VIN",
+      "red",
+      []
+    ],
+    [
+      "sensor3:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sensor3:TRIG",
+      "esp:D26",
+      "green",
+      []
+    ],
+    [
+      "sensor3:ECHO",
+      "rhigh3:1",
+      "orange",
+      []
+    ],
+    [
+      "rhigh3:2",
+      "esp:D27",
+      "blue",
+      []
+    ],
+    [
+      "rhigh3:2",
+      "rlow3:1",
+      "blue",
+      []
+    ],
+    [
+      "rlow3:2",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D25",
+      "rled3:1",
+      "red",
+      []
+    ],
+    [
+      "rled3:2",
+      "led3:A",
+      "red",
+      []
+    ],
+    [
+      "led3:C",
+      "esp:GND.1",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
